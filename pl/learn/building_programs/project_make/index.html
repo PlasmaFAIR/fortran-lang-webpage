@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
-    <title>An introduction to make &#8212; Fortran Programming Language</title>
+    <title>Wstęp do make &#8212; Fortran Programming Language</title>
   
   
   
@@ -59,7 +59,7 @@
     <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/project_make/" />
     <link rel="index" title="Indeks" href="../../../genindex/" />
     <link rel="search" title="Szukaj" href="../../../search/" />
-    <link rel="next" title="Distributing your programs" href="../distributing/" />
+    <link rel="next" title="Dystrybucja programów" href="../distributing/" />
     <link rel="prev" title="Narzędzia do kompilacji" href="../build_tools/" /> 
 <meta
   name="description"
@@ -564,15 +564,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Compiling the source code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Kompilowanie kodu źródłowego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">An introduction to make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distributing your programs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Wstęp do make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -612,6 +612,12 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rosetta_stone/">Python Fortran Rosetta Stone</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../oop_features_in_fortran/">Putting Fortran’s object-related features to practical use</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_based_programming_techniques/">Object-based programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_oriented_programming_techniques/">Object-oriented programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/performance_and_ease_of_use/">Performance and ease of use</a></li>
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -649,9 +655,9 @@
     <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Tworzenie programów</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">An introduction to make</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Wstęp do make</span></li>
   </ul>
 </nav>
 </div>
@@ -668,25 +674,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="an-introduction-to-make">
-<h1>An introduction to make<a class="headerlink" href="#an-introduction-to-make" title="Link to this heading">#</a></h1>
-<p>We briefly discussed the basics of <code class="docutils literal notranslate"><span class="pre">make</span></code>. This chapter gives ideas
-and strategies to scale <code class="docutils literal notranslate"><span class="pre">make</span></code> for larger projects.</p>
-<p>Before going into detail with <code class="docutils literal notranslate"><span class="pre">make</span></code>, consider a few points:</p>
+<h1>Wstęp do make<a class="headerlink" href="#an-introduction-to-make" title="Link to this heading">#</a></h1>
+<p>Omówiliśmy już podstawy <code class="docutils literal notranslate"><span class="pre">make</span></code>. W tym rozdziale zaprezentujemy pomysły i strategie skalowania <code class="docutils literal notranslate"><span class="pre">make</span></code> w większych projektach.</p>
+<p>Zanim przejdziemy do szczegółów <code class="docutils literal notranslate"><span class="pre">make</span></code>, rozważmy kilka punktów:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> is a Unix tool and might give you a hard time when porting to non-Unix
-platforms. That said, there are also different flavors of <code class="docutils literal notranslate"><span class="pre">make</span></code> available,
-not all might support the features you want to use.</p></li>
-<li><p>While <code class="docutils literal notranslate"><span class="pre">make</span></code> gives you full control over the build process, it also
-means you are responsible for the entire build process, and you have to specify the rules for every detail of your project.
-You might find yourself spending a significant amount of time writing and
-maintaining your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> instead of developing your source code.</p></li>
-<li><p>You can work with your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, but think about other developers
-on your project who may not be familiar with <code class="docutils literal notranslate"><span class="pre">make</span></code>. How much time do you expect them to spend learning your
-<code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and would they be able to debug or add features?</p></li>
-<li><p>Pure <code class="docutils literal notranslate"><span class="pre">make</span></code> will not scale. You will soon add auxiliary programs
-to dynamically or statically generate your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Those introduce
-dependencies and possible sources of errors. The effort needed to test and document those
-tools should not be underestimated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> jest narzędziem Unix i może sprawiać ci problemy podczas przenoszenia na platformy inne niż Unix. Oprócz tego, są również dostępne różne odmiany <code class="docutils literal notranslate"><span class="pre">make</span></code>, nie wszystkie mogą obsługiwać funkcje, których chcesz użyć.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> daje ci pełną kontrolę nad procesem kompilacji, oznacza to również, że to ty jesteś za niego odpowiedzialny oraz musisz sprecyzować zasady dla każdego szczegółu twojego projektu. Może okazać się, że przeznaczysz znaczną część swojego czasu na pisanie i utrzymywanie twojego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> zamiast na pisanie kodu źródłowego.</p></li>
+<li><p>Możesz pracować ze swoim <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, jednak pomysł również o innych deweloperach w twoim projekcie, którzy mogą być niezaznajomieni z <code class="docutils literal notranslate"><span class="pre">make</span></code>. Jak dużo czasu będą musieli poświęcić na nauczenie się twojego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> i czy będą w stanie go debugować i dodawać własne funkcje?</p></li>
+<li><p>Czysty <code class="docutils literal notranslate"><span class="pre">make</span></code> nie będzie się skalował. Wkrótce dodasz programy posiłkowe, aby dynamicznie lub statycznie generować twój <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Te z kolei wprowadzają zależności i prawdopodobne źródła błędów. Wysiłek włożony w testowanie i dokumentowanie tych narzędzi powinien być wzięty pod uwagę.</p></li>
 </ol>
 <p>If you think <code class="docutils literal notranslate"><span class="pre">make</span></code> is suitable for your needs, than you can start writing
 your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. For this course we will use real world examples from the
