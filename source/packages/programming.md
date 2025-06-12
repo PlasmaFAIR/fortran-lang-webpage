@@ -48,6 +48,13 @@ Tags: {% for tag in j.tags.split() %} {bdg-light}`{{ tag }}` {% endfor %}
 
 ## {fab}`git-alt;1em` [{{j.name}}]({{j.url}})
 
+{% if j.license is defined %}
+{% if j.license.lower() == "closed" %}
+<img src='https://img.shields.io/badge/license-{{ j.license | replace("-", "--") | replace("_", "__") }}-red' alt="License">
+{% else %}
+<img src='https://img.shields.io/badge/license-{{ j.license | replace("-", "--") | replace("_", "__") }}-blue' alt="License">
+{% endif %}
+{% endif %}
 {% if j.description is defined %}
 {{j.description}}
 {% endif %}
