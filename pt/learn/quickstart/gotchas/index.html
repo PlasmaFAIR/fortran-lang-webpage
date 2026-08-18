@@ -686,7 +686,7 @@
     <span class="n">nbofwomen</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">nbofchildrenperwoman</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">nbofchildren</span> <span class="o">=</span> <span class="n">nbofwomen</span> <span class="o">*</span> <span class="n">nbofchildrenperwoman</span>
-    <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">&quot;number of children:&quot;</span><span class="p">,</span> <span class="n">nbofchildrem</span>
+    <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">"number of children:"</span><span class="p">,</span> <span class="n">nbofchildrem</span>
 <span class="n">end</span> <span class="n">program</span>
 </pre></div>
 </div>
@@ -702,14 +702,14 @@
     <span class="n">nbofwomen</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">nbofchildrenperwoman</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">nbofchildren</span> <span class="o">=</span> <span class="n">nbofwomen</span> <span class="o">*</span> <span class="n">nbofchildrenperwoman</span>
-    <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">&quot;number of children:&quot;</span><span class="p">,</span> <span class="n">nbofchildrem</span>
+    <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">"number of children:"</span><span class="p">,</span> <span class="n">nbofchildrem</span>
 <span class="n">end</span> <span class="n">program</span>
 </pre></div>
 </div>
 <p>And now the compilation fails, allowing to quickly correct the typo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    7 |     print*, &quot;number of children:&quot;, nbofchildrem
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    7 |     print*, "number of children:", nbofchildrem
       |                                               1
-Error: Symbol &#39;nbofchildrem&#39; at (1) has no IMPLICIT type; did you mean &#39;nbofchildren&#39;?
+Error: Symbol 'nbofchildrem' at (1) has no IMPLICIT type; did you mean 'nbofchildren'?
 </pre></div>
 </div>
 </section>
@@ -747,7 +747,7 @@ Error: Symbol &#39;nbofchildrem&#39; at (1) has no IMPLICIT type; did you mean &
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">integer</span> <span class="pre">::</span> <span class="pre">c=0</span></code> is actually a one-shot <strong>compile time initialization</strong>, and it makes the variable persistent between calls to <code class="docutils literal notranslate"><span class="pre">foo()</span></code>. It is actually equivalent to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>integer, save :: c=0   ! &quot;save&quot; can be omitted, but it&#39;s clearer with it
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>integer, save :: c=0   ! "save" can be omitted, but it's clearer with it
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">save</span></code> attribute is equivalent to the C <code class="docutils literal notranslate"><span class="pre">static</span></code> attribute used inside a function to make a variable persistent, and it is <em>implied</em> in the case the variable is initialized. This is a modernized syntax (introduced in Fortran 90) compared to the legacy (and still valid) syntax:</p>
@@ -819,7 +819,7 @@ Error: Symbol &#39;nbofchildrem&#39; at (1) has no IMPLICIT type; did you mean &
 <h2>Leading space in prints<a class="headerlink" href="#leading-space-in-prints" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">program</span> <span class="n">foo</span>
 <span class="n">implicit</span> <span class="n">none</span>
-    <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span>
+    <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">"Hello world!"</span>
 <span class="n">end</span> <span class="n">program</span>
 </pre></div>
 </div>
@@ -829,7 +829,7 @@ Error: Symbol &#39;nbofchildrem&#39; at (1) has no IMPLICIT type; did you mean &
 </pre></div>
 </div>
 <p>Note the extra leading space, which is not present in the string of the source code. Historically, the first character was containing a <a class="reference external" href="https://en.wikipedia.org/wiki/ASA_carriage_control_characters">carriage control code</a> for the early printers, and it was not printed per se. The space « « was instructing the printer to perform a CR+LF sequence before printing the content, and was automatically prepended by the Fortran <code class="docutils literal notranslate"><span class="pre">print*</span></code> statement. Some compilers still do that, although the modern output devices do neither intercept nor use the control character, which is hence «printed». If this leading blank is a problem (it rarely is), then instead of the <code class="docutils literal notranslate"><span class="pre">*</span></code> (which means «let the compiler decide how to format the output») we can code an explicit format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="nb">print</span> <span class="s2">&quot;(A)&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="nb">print</span> <span class="s2">"(A)"</span><span class="p">,</span> <span class="s2">"Hello world!"</span>
 </pre></div>
 </div>
 <p>In this case, the compiler does no longer prepend the leading space:</p>
@@ -854,7 +854,7 @@ Hello world!
 <span class="n">Error</span><span class="p">:</span> <span class="n">Non</span><span class="o">-</span><span class="n">numeric</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">statement</span> <span class="n">label</span> <span class="n">at</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">hello</span><span class="o">.</span><span class="n">f</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span>
 
-     <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span>
+     <span class="nb">print</span><span class="o">*</span><span class="p">,</span> <span class="s2">"Hello world!"</span>
      <span class="mi">1</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">Non</span><span class="o">-</span><span class="n">numeric</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">statement</span> <span class="n">label</span> <span class="n">at</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
